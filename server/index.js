@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import nodemailer from 'nodemailer'
 import path from 'node:path'
+import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -18,7 +19,6 @@ const {
   GMAIL_USER,
   GMAIL_APP_PASSWORD,
   NOTIFY_EMAIL = GMAIL_USER,
-  NODE_ENV,
 } = process.env
 
 const transporter = nodemailer.createTransport({
@@ -91,9 +91,9 @@ app.post('/api/contact', async (req, res) => {
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }))
 
-// Serve the built Vite app in production (single Render service)
-if (NODE_ENV === 'production') {
-  const distPath = path.join(__dirname, '..', 'dist')
+// Serve the built Vite app whenever dist/ exists (single Render service)
+const distPath = path.join(__dirname, '..', 'dist')
+if (fs.existsSync(distPath)) {
   app.use(express.static(distPath))
   app.get(/.*/, (_req, res) => res.sendFile(path.join(distPath, 'index.html')))
 }
