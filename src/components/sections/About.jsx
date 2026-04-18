@@ -12,9 +12,9 @@ const points = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 sm:py-32">
+    <section id="about" className="relative py-20 sm:py-24 lg:py-32">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
           {/* Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

@@ -20,7 +20,7 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id="work" className="relative py-24 sm:py-32 bg-slate-50/60 dark:bg-white/[0.015]">
+    <section id="work" className="relative py-20 sm:py-24 lg:py-32 bg-slate-50/60 dark:bg-white/[0.015]">
       <Container>
         <SectionHeading
           eyebrow="Our Work"
@@ -28,7 +28,7 @@ export default function Portfolio() {
           subtitle="A small selection from our recent client work — every project is designed and engineered with care."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {projects.map((p, i) => (
             <motion.article
               key={p.title}
@@ -85,7 +85,7 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-6 sm:p-7">
                 <p className="text-xs font-medium tracking-widest uppercase text-brand-600 dark:text-brand-300 mb-1.5">
                   {p.category}
                 </p>

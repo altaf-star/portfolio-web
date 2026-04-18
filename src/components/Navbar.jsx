@@ -28,14 +28,15 @@ export default function Navbar() {
           : 'py-5 bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 lg:px-14 xl:px-16 flex items-center justify-between gap-3">
         {/* Logo */}
         <motion.a
           href="#home"
           whileHover={{ scale: 1.03 }}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2 group shrink-0"
+          aria-label="AA Dev Studio — Home"
         >
-          <Logo className="h-9 w-auto drop-shadow-[0_2px_10px_rgba(99,102,241,0.35)]" />
+          <Logo className="h-11 sm:h-12 md:h-14 w-auto drop-shadow-[0_2px_12px_rgba(99,102,241,0.4)]" />
         </motion.a>
 
         {/* Desktop nav */}
@@ -76,9 +77,9 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden bg-white/90 dark:bg-[#070218]/90 backdrop-blur-xl border-t border-slate-200/50 dark:border-white/5"
+            className="md:hidden overflow-hidden bg-white/95 dark:bg-[#070218]/95 backdrop-blur-xl border-t border-slate-200/50 dark:border-white/5"
           >
-            <div className="px-6 py-4 flex flex-col gap-1">
+            <div className="px-5 sm:px-8 py-5 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}

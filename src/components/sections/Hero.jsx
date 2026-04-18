@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center min-h-screen pt-32 pb-24 overflow-hidden"
+      className="relative flex items-center justify-center min-h-screen pt-28 sm:pt-32 pb-20 sm:pb-24 overflow-hidden"
     >
       {/* Background layers */}
       <div className="absolute inset-0 bg-aurora pointer-events-none" />
@@ -85,7 +85,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1] mb-6"
+            className="font-display text-[2.25rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6"
           >
             We build modern websites that{' '}
             <span className="gradient-text">grow your business</span>.

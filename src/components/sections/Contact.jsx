@@ -48,10 +48,10 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-5 py-3.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none transition-all duration-300 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 dark:focus:ring-brand-500/20'
+    'w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-5 py-4 text-[15px] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none transition-all duration-300 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 dark:focus:ring-brand-500/20'
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
+    <section id="contact" className="relative py-20 sm:py-24 lg:py-32">
       <Container>
         <SectionHeading
           eyebrow="Let&rsquo;s Talk"
@@ -59,18 +59,18 @@ export default function Contact() {
           subtitle="Send us a message — we usually reply within a few hours."
         />
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 max-w-5xl mx-auto">
           {/* Info column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2 flex flex-col gap-5"
+            className="lg:col-span-2 flex flex-col gap-4 sm:gap-5"
           >
             <a
               href={`mailto:${brand.email}`}
-              className="group flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/5 hover:border-brand-500/40 hover:shadow-lg transition-all"
+              className="group flex items-start gap-4 p-5 sm:p-6 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/5 hover:border-brand-500/40 hover:shadow-lg transition-all"
             >
               <div className="w-11 h-11 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-300 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                 <FiMail size={18} />
@@ -89,7 +89,7 @@ export default function Contact() {
               href={brand.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/5 hover:border-emerald-500/40 hover:shadow-lg transition-all"
+              className="group flex items-start gap-4 p-5 sm:p-6 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/5 hover:border-emerald-500/40 hover:shadow-lg transition-all"
             >
               <div className="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                 <FiMessageCircle size={18} />
@@ -104,7 +104,7 @@ export default function Contact() {
               </div>
             </a>
 
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-brand-500/10 to-accent/10 border border-brand-500/20">
+            <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-brand-500/10 to-accent/10 border border-brand-500/20">
               <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
                 <span className="font-semibold">Available worldwide.</span>{' '}
                 We work with clients across time zones — North America, Europe,
@@ -120,7 +120,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
-            className="lg:col-span-3 p-6 sm:p-8 rounded-3xl bg-white dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/5 shadow-sm space-y-4"
+            className="lg:col-span-3 p-6 sm:p-8 lg:p-10 rounded-3xl bg-white dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/5 shadow-sm space-y-5"
           >
             {/* Honeypot — hidden from humans, bots fill it */}
             <input
@@ -133,7 +133,7 @@ export default function Contact() {
               className="hidden"
               aria-hidden="true"
             />
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-2">
                   Your Name

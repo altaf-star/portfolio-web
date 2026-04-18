@@ -46,6 +46,19 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Prevent decorative absolute elements (orbs, glows) from forcing horizontal scroll on mobile */
+#root {
+  overflow-x: clip;
+}
+
+/* Safe-area insets for notched phones */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
 .dark body {
   background-color: #070218;
   color: #e2e8f0;

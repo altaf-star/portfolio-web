@@ -32,7 +32,7 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className="relative py-24 sm:py-32">
+    <section className="relative py-20 sm:py-24 lg:py-32">
       <Container>
         <SectionHeading
           eyebrow="Why Choose Us"
@@ -40,7 +40,7 @@ export default function WhyUs() {
           subtitle="We combine the speed of a freelancer with the polish of a top-tier agency."
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {reasons.map((r, i) => {
             const Icon = r.icon
             return (
@@ -51,7 +51,7 @@ export default function WhyUs() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 whileHover={{ y: -6 }}
-                className="group relative bg-white dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5 rounded-3xl p-7 overflow-hidden"
+                className="group relative bg-white dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5 rounded-3xl p-6 sm:p-7 lg:p-8 overflow-hidden"
               >
                 {/* Hover glow */}
                 <div

@@ -10,7 +10,7 @@ export default function Services() {
   const [active, setActive] = useState(null)
 
   return (
-    <section id="services" className="relative py-24 sm:py-32">
+    <section id="services" className="relative py-20 sm:py-24 lg:py-32">
       <Container>
         <SectionHeading
           eyebrow="What We Do"
@@ -18,7 +18,7 @@ export default function Services() {
           subtitle="A complete digital partner — from first sketch to long-term support."
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {services.map((service, i) => {
             const Icon = service.icon
             return (
@@ -31,7 +31,7 @@ export default function Services() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
                 whileHover={{ y: -6 }}
-                className="group relative text-left bg-white dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5 rounded-3xl p-7 shadow-sm hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50"
+                className="group relative text-left bg-white dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5 rounded-3xl p-6 sm:p-7 lg:p-8 shadow-sm hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50"
               >
                 {/* Icon */}
                 <div className="relative mb-6">
