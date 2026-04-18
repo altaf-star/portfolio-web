@@ -1,128 +1,114 @@
 import { motion } from 'framer-motion'
-import { FiExternalLink, FiGithub, FiArrowUpRight } from 'react-icons/fi'
+import { FiArrowUpRight, FiExternalLink } from 'react-icons/fi'
 import Container from '../ui/Container'
-import SectionHeading from '../ui/SectionHeading'
 import Button from '../ui/Button'
+import TiltCard from '../ui/TiltCard'
 
-// Add new projects here — e.g. Mahi School. Each entry renders one card.
-const projects = [
-{
-    title: 'Mahi School',
-    category: 'School Management System',
-    description:
-      'A full-stack school management portal with student enrollment, graduation, withdrawal tracking, and CSV export — secured with JWT auth.',
-    stack: ['React', 'Express', 'MongoDB', 'Tailwind'],
-    gradient: 'from-cyan-400 via-blue-500 to-violet-600',
-    accent: 'text-blue-300',
-    live: 'https://mahischool.org',
+const sub = [
+  {
+    title: 'Design Language',
+    desc: 'Intentional typography, cinematic spacing, and premium interactions on every breakpoint.',
+  },
+  {
+    title: 'Performance Layer',
+    desc: 'Fast rendering, clean code, and SEO-ready architecture for growth-focused teams.',
   },
 ]
 
 export default function Portfolio() {
   return (
-    <section id="work" className="relative py-20 sm:py-24 lg:py-32 bg-slate-50/60 dark:bg-white/[0.015]">
+    <section id="work" className="relative py-28 sm:py-36 lg:py-44">
       <Container>
-        <SectionHeading
-          eyebrow="Our Work"
-          title="Recent projects we're proud of"
-          subtitle="A small selection from our recent client work — every project is designed and engineered with care."
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-12 sm:mb-16 lg:mb-20"
+        >
+          <p className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-slate-400 font-medium mb-4">
+            Featured Work
+          </p>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.1]">
+            Projects we are proud to put our name on.
+          </h2>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {projects.map((p, i) => (
-            <motion.article
-              key={p.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ delay: i * 0.12, duration: 0.6 }}
-              whileHover={{ y: -8 }}
-              className="group relative bg-white dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/5 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-500"
+        <motion.article
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7 }}
+          className="relative rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-20 overflow-hidden"
+        >
+          <div
+            aria-hidden
+            className="absolute -top-40 -right-40 w-[420px] h-[420px] rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"
+          />
+          <div
+            aria-hidden
+            className="absolute -bottom-40 -left-40 w-[380px] h-[380px] rounded-full bg-violet-500/10 blur-3xl pointer-events-none"
+          />
+
+          <div className="relative z-10">
+          <p className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-slate-400 font-medium mb-4">
+            Featured Build
+          </p>
+          <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.08] mb-5 max-w-3xl">
+            Mahi School Platform
+          </h3>
+          <p className="text-[15px] sm:text-lg text-slate-300/90 leading-relaxed max-w-2xl mb-8">
+            A complete school management experience with enrollment, reporting, and secure
+            role-based access. Clean interface, reliable workflows, measurable outcomes.
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              href="https://mahischool.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="glow"
+              size="lg"
             >
-              {/* Visual mock */}
-              <div className={`relative h-48 bg-gradient-to-br ${p.gradient} overflow-hidden`}>
-                {/* Decorative grid */}
-                <div className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px)',
-                    backgroundSize: '24px 24px',
-                  }}
-                />
-                {/* Floating browser mock */}
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  transition={{ type: 'spring', stiffness: 200 }}
-                  className="absolute inset-x-6 bottom-0 translate-y-6 rounded-t-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow-2xl overflow-hidden border border-white/40"
+              Open Live Project <FiExternalLink size={16} />
+            </Button>
+            <div className="flex flex-wrap gap-1.5">
+              {['React', 'Express', 'MongoDB', 'Tailwind'].map((t) => (
+                <span
+                  key={t}
+                  className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 text-slate-300 border border-white/10"
                 >
-                  <div className="flex items-center gap-1.5 px-3 py-2 border-b border-slate-200/60 dark:border-white/10">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                  </div>
-                  <div className="p-3 space-y-2">
-                    <div className="h-2 w-3/4 rounded-full bg-slate-200 dark:bg-slate-700" />
-                    <div className="h-2 w-1/2 rounded-full bg-slate-200 dark:bg-slate-700" />
-                    <div className={`h-3 w-1/3 rounded-full bg-gradient-to-r ${p.gradient}`} />
-                  </div>
-                </motion.div>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+          </div>
+        </motion.article>
 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center gap-3 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {p.live && (
-                  <motion.a
-                    href={p.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.92 }}
-                    className="w-11 h-11 rounded-full bg-white/95 text-slate-900 flex items-center justify-center hover:bg-white"
-                    aria-label="Live demo"
-                  >
-                    <FiExternalLink size={18} />
-                  </motion.a>
-                  )}
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mt-12 sm:mt-16 lg:mt-20">
+          {sub.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+            >
+              <TiltCard className="h-full rounded-xl">
+                <div className="h-full rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.035] hover:border-cyan-300/20 px-8 py-9 sm:px-10 sm:py-11 transition-colors">
+                  <h3 className="font-display text-lg sm:text-xl font-semibold text-white mb-3">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">{s.desc}</p>
                 </div>
-              </div>
-
-              <div className="p-6 sm:p-7">
-                <p className="text-xs font-medium tracking-widest uppercase text-brand-600 dark:text-brand-300 mb-1.5">
-                  {p.category}
-                </p>
-                <h3 className="font-display text-xl font-semibold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
-                  {p.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {p.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-white/5"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={p.live || '#'}
-                  target={p.live ? '_blank' : undefined}
-                  rel={p.live ? 'noopener noreferrer' : undefined}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 dark:text-white group/link"
-                >
-                  Live Demo
-                  <FiArrowUpRight className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                </a>
-              </div>
-            </motion.article>
+              </TiltCard>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-14">
-          <Button href="#contact" variant="outline">
-            Start your project
-            <FiArrowUpRight />
+        <div className="flex justify-center mt-14 sm:mt-20">
+          <Button href="#contact" variant="outline" className="text-white border-white/15 hover:bg-white/5 hover:border-white/30">
+            Start your project <FiArrowUpRight />
           </Button>
         </div>
       </Container>

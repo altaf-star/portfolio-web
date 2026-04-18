@@ -8,8 +8,8 @@ export const brand = {
 
 export const navLinks = [
   { name: 'Home', href: '#home' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Services', href: '#services' },
   { name: 'Work', href: '#work' },
-  { name: 'About', href: '#about' },
   { name: 'Contact', href: '#contact' },
 ]

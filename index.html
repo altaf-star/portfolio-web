@@ -22,14 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script>
-      // Avoid theme flash: set class before paint
-      (function(){
-        try {
-          var t = localStorage.getItem('theme');
-          var dark = t ? t === 'dark' : true; // default to dark to match brand
-          if (dark) document.documentElement.classList.add('dark');
-        } catch(e) {}
-      })();
+      // Dark mode only — always apply before paint
+      document.documentElement.classList.add('dark');
     </script>
   </head>
   <body>

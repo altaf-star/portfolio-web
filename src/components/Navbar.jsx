@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { navLinks } from '../data/site'
-import ThemeToggle from './ThemeToggle'
 import Button from './ui/Button'
-import Logo from './ui/Logo'
+import Logo3D from './ui/Logo3D'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -36,7 +35,7 @@ export default function Navbar() {
           className="flex items-center gap-2 group shrink-0"
           aria-label="AA Dev Studio — Home"
         >
-          <Logo className="h-11 sm:h-12 md:h-14 w-auto drop-shadow-[0_2px_12px_rgba(99,102,241,0.4)]" />
+          <Logo3D className="h-11 sm:h-12 md:h-14 w-auto drop-shadow-[0_2px_12px_rgba(99,102,241,0.45)]" />
         </motion.a>
 
         {/* Desktop nav */}
@@ -53,10 +52,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <div className="hidden md:block">
-            <Button href="#contact" variant="gradient" size="sm">
-              Get a Quote
+            <Button href="#contact" variant="glow" size="sm">
+              Book Intro Call
             </Button>
           </div>
           <button
@@ -91,8 +89,8 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="pt-3 mt-2 border-t border-slate-200/60 dark:border-white/5">
-                <Button href="#contact" variant="gradient" size="sm" className="w-full" onClick={() => setOpen(false)}>
-                  Get a Quote
+                <Button href="#contact" variant="glow" size="sm" className="w-full" onClick={() => setOpen(false)}>
+                  Book Intro Call
                 </Button>
               </div>
             </div>
