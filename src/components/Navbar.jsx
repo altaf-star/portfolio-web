@@ -58,11 +58,13 @@ export default function Navbar() {
             </Button>
           </div>
           <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center text-slate-200 hover:bg-white/10 transition-colors"
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setOpen((v) => !v) }}
+            className="md:hidden relative z-[60] w-11 h-11 rounded-full flex items-center justify-center text-slate-200 hover:bg-white/10 active:bg-white/15 transition-colors cursor-pointer"
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
-            {open ? <FiX size={20} /> : <FiMenu size={20} />}
+            {open ? <FiX size={22} /> : <FiMenu size={22} />}
           </button>
         </div>
       </div>
