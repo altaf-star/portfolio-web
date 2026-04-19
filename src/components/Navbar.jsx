@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { navLinks } from '../data/site'
 import Button from './ui/Button'
@@ -69,52 +69,36 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden bg-[#0a0410]/95 backdrop-blur-xl border-t border-white/5"
-          >
-            <div className="px-5 sm:px-8 py-5 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    const el = document.querySelector(link.href)
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                    setOpen(false)
-                  }}
-                  className="py-3 text-sm font-medium text-slate-200 hover:text-[color:var(--teal-soft)] transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="pt-3 mt-2 border-t border-white/5">
-                <Button
-                  href="#contact"
-                  variant="glow"
-                  size="sm"
-                  className="w-full"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    const el = document.querySelector('#contact')
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                    setOpen(false)
-                  }}
-                >
-                  Book Intro Call
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile menu — always mounted, toggled by CSS so anchor taps aren't killed by unmount */}
+      <div
+        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out bg-[#0a0410]/95 backdrop-blur-xl border-t border-white/5 ${
+          open ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="px-5 sm:px-8 py-5 flex flex-col gap-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setTimeout(() => setOpen(false), 250)}
+              className="py-3 text-sm font-medium text-slate-200 hover:text-[color:var(--teal-soft)] transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+          <div className="pt-3 mt-2 border-t border-white/5">
+            <Button
+              href="#contact"
+              variant="glow"
+              size="sm"
+              className="w-full"
+              onClick={() => setTimeout(() => setOpen(false), 250)}
+            >
+              Book Intro Call
+            </Button>
+          </div>
+        </div>
+      </div>
     </motion.nav>
   )
 }
