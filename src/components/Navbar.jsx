@@ -84,14 +84,30 @@ export default function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const el = document.querySelector(link.href)
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    setOpen(false)
+                  }}
                   className="py-3 text-sm font-medium text-slate-200 hover:text-[color:var(--teal-soft)] transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
               <div className="pt-3 mt-2 border-t border-white/5">
-                <Button href="#contact" variant="glow" size="sm" className="w-full" onClick={() => setOpen(false)}>
+                <Button
+                  href="#contact"
+                  variant="glow"
+                  size="sm"
+                  className="w-full"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const el = document.querySelector('#contact')
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    setOpen(false)
+                  }}
+                >
                   Book Intro Call
                 </Button>
               </div>
