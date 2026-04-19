@@ -1,36 +1,32 @@
-import { motion } from 'framer-motion'
-import { FiArrowUpRight, FiExternalLink } from 'react-icons/fi'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FiExternalLink, FiPlus } from 'react-icons/fi'
 import Container from '../ui/Container'
 import Button from '../ui/Button'
-import TiltCard from '../ui/TiltCard'
-
-const sub = [
-  {
-    title: 'Design Language',
-    desc: 'Intentional typography, cinematic spacing, and premium interactions on every breakpoint.',
-  },
-  {
-    title: 'Performance Layer',
-    desc: 'Fast rendering, clean code, and SEO-ready architecture for growth-focused teams.',
-  },
-]
 
 export default function Portfolio() {
+  const [open, setOpen] = useState(false)
+
   return (
-    <section id="work" className="relative py-28 sm:py-36 lg:py-44">
+    <section
+      id="work"
+      style={{ paddingTop: '2.4rem', paddingBottom: '2.4rem' }}
+      className="relative"
+    >
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-12 sm:mb-16 lg:mb-20"
+          style={{ marginBottom: '0.5rem' }}
+          className="max-w-3xl"
         >
-          <p className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-slate-400 font-medium mb-4">
+          <p className="text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[color:var(--teal-soft)] font-semibold mb-4">
             Featured Work
           </p>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.1]">
-            Projects we are proud to put our name on.
+            Projects we&rsquo;re proud of.
           </h2>
         </motion.div>
 
@@ -43,74 +39,80 @@ export default function Portfolio() {
         >
           <div
             aria-hidden
-            className="absolute -top-40 -right-40 w-[420px] h-[420px] rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"
+            className="absolute -top-40 -right-40 w-[420px] h-[420px] rounded-full bg-[color:var(--teal)]/10 blur-3xl pointer-events-none"
           />
           <div
             aria-hidden
-            className="absolute -bottom-40 -left-40 w-[380px] h-[380px] rounded-full bg-violet-500/10 blur-3xl pointer-events-none"
+            className="absolute -bottom-40 -left-40 w-[380px] h-[380px] rounded-full bg-[color:var(--signature)]/12 blur-3xl pointer-events-none"
           />
 
           <div className="relative z-10">
-          <p className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-slate-400 font-medium mb-4">
-            Featured Build
-          </p>
-          <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.08] mb-5 max-w-3xl">
-            Mahi School Platform
-          </h3>
-          <p className="text-[15px] sm:text-lg text-slate-300/90 leading-relaxed max-w-2xl mb-8">
-            A complete school management experience with enrollment, reporting, and secure
-            role-based access. Clean interface, reliable workflows, measurable outcomes.
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button
-              href="https://mahischool.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="glow"
-              size="lg"
-            >
-              Open Live Project <FiExternalLink size={16} />
-            </Button>
-            <div className="flex flex-wrap gap-1.5">
-              {['React', 'Express', 'MongoDB', 'Tailwind'].map((t) => (
-                <span
-                  key={t}
-                  className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 text-slate-300 border border-white/10"
-                >
-                  {t}
-                </span>
-              ))}
+            <p className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-slate-400 font-medium mb-4">
+              Featured Build
+            </p>
+            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.08] mb-5 max-w-3xl">
+              Mahi School Platform
+            </h3>
+            <p className="text-[15px] sm:text-lg text-slate-300/85 leading-relaxed max-w-2xl mb-8">
+              Enrollment, reporting, and role-based access — in one calm interface.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <Button
+                href="https://mahischool.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="glow"
+                size="lg"
+              >
+                Open Live Project <FiExternalLink size={16} />
+              </Button>
+              <button
+                type="button"
+                onClick={() => setOpen(!open)}
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[color:var(--signature-soft)] hover:text-white transition-colors px-3 py-2"
+                aria-expanded={open}
+              >
+                {open ? 'Hide details' : 'Project details'}
+                <FiPlus className={`transition-transform duration-300 ${open ? 'rotate-45' : ''}`} />
+              </button>
             </div>
-          </div>
+
+            <AnimatePresence initial={false}>
+              {open && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="grid sm:grid-cols-2 gap-6 pt-2 max-w-3xl">
+                    <div>
+                      <h4 className="text-sm font-semibold text-white mb-2">Stack</h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {['React', 'Express', 'MongoDB', 'Tailwind'].map((t) => (
+                          <span
+                            key={t}
+                            className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 text-slate-300 border border-white/10"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-white mb-2">Outcome</h4>
+                      <p className="text-sm text-slate-300/80 leading-relaxed">
+                        Unified three disconnected tools into one platform. Cut admin time in half.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.article>
-
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mt-12 sm:mt-16 lg:mt-20">
-          {sub.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-            >
-              <TiltCard className="h-full rounded-xl">
-                <div className="h-full rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.035] hover:border-cyan-300/20 px-8 py-9 sm:px-10 sm:py-11 transition-colors">
-                  <h3 className="font-display text-lg sm:text-xl font-semibold text-white mb-3">
-                    {s.title}
-                  </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">{s.desc}</p>
-                </div>
-              </TiltCard>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="flex justify-center mt-14 sm:mt-20">
-          <Button href="#contact" variant="outline" className="text-white border-white/15 hover:bg-white/5 hover:border-white/30">
-            Start your project <FiArrowUpRight />
-          </Button>
-        </div>
       </Container>
     </section>
   )

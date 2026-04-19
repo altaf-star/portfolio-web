@@ -10,7 +10,6 @@ function DistortedOrb() {
     const t = state.clock.getElapsedTime()
     mesh.current.rotation.x = t * 0.15
     mesh.current.rotation.y = t * 0.25
-    // Gentle cursor-follow parallax
     const { x, y } = state.pointer
     mesh.current.position.x += (x * 0.3 - mesh.current.position.x) * 0.04
     mesh.current.position.y += (y * 0.2 - mesh.current.position.y) * 0.04
@@ -21,9 +20,9 @@ function DistortedOrb() {
       <mesh ref={mesh} scale={1.6}>
         <icosahedronGeometry args={[1, 24]} />
         <MeshDistortMaterial
-          color="#6366f1"
-          emissive="#4f46e5"
-          emissiveIntensity={0.35}
+          color="#c72465"
+          emissive="#7c1443"
+          emissiveIntensity={0.4}
           distort={0.45}
           speed={1.8}
           roughness={0.25}
@@ -47,9 +46,9 @@ function SecondaryOrb() {
     <mesh ref={mesh} scale={0.55}>
       <icosahedronGeometry args={[1, 12]} />
       <MeshDistortMaterial
-        color="#22d3ee"
-        emissive="#22d3ee"
-        emissiveIntensity={0.6}
+        color="#14a4b3"
+        emissive="#14a4b3"
+        emissiveIntensity={0.65}
         distort={0.55}
         speed={2.4}
         roughness={0.15}
@@ -68,8 +67,8 @@ export default function HeroOrb3D({ className = '' }) {
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
         <ambientLight intensity={0.4} />
-        <directionalLight position={[3, 3, 5]} intensity={1.2} color="#a855f7" />
-        <pointLight position={[-4, -2, 3]} intensity={1.8} color="#22d3ee" />
+        <directionalLight position={[3, 3, 5]} intensity={1.2} color="#ec84ae" />
+        <pointLight position={[-4, -2, 3]} intensity={1.8} color="#14a4b3" />
         <Suspense fallback={null}>
           <DistortedOrb />
           <SecondaryOrb />

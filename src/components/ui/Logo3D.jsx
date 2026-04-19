@@ -1,9 +1,8 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import Logo from './Logo'
+import BrandMark from './BrandMark'
 
-// Logo rendered in CSS 3D — tilts on mouse, floats gently. No Three.js cost.
-export default function Logo3D({ className = '', tilt = 18 }) {
+export default function Logo3D({ className = '', tilt = 16 }) {
   const ref = useRef(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -30,7 +29,7 @@ export default function Logo3D({ className = '', tilt = 18 }) {
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{ transformPerspective: 800 }}
-      className="inline-block"
+      className="inline-flex items-center gap-2.5"
     >
       <motion.div
         animate={{ y: [0, -3, 0] }}
@@ -41,8 +40,16 @@ export default function Logo3D({ className = '', tilt = 18 }) {
           transformStyle: 'preserve-3d',
         }}
       >
-        <Logo className={className} />
+        <BrandMark className={className} />
       </motion.div>
+      <span className="hidden sm:flex flex-col leading-none">
+        <span className="font-display text-[15px] md:text-base font-bold tracking-wide text-white">
+          AA DEV
+        </span>
+        <span className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[color:var(--teal-soft)]">
+          Studio
+        </span>
+      </span>
     </motion.div>
   )
 }

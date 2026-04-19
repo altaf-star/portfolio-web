@@ -39,10 +39,14 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-[15px] text-white placeholder-slate-500 outline-none transition-all duration-300 focus:border-cyan-300/50 focus:ring-4 focus:ring-cyan-300/10'
+    'w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-[15px] text-white placeholder-slate-500 outline-none transition-all duration-300 focus:border-[color:var(--teal)]/60 focus:ring-4 focus:ring-[color:var(--teal)]/10'
 
   return (
-    <section id="contact" className="relative py-28 sm:py-36 lg:py-44">
+    <section
+      id="contact"
+      style={{ paddingTop: '2.4rem', paddingBottom: '2.4rem' }}
+      className="relative"
+    >
       <Container>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
           {/* Left panel */}
@@ -55,22 +59,21 @@ export default function Contact() {
           >
             <div
               aria-hidden
-              className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"
+              className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-[color:var(--teal)]/10 blur-3xl pointer-events-none"
             />
-            <p className="text-[11px] sm:text-xs tracking-[0.2em] uppercase text-slate-400 font-medium mb-4">
+            <p className="relative text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[color:var(--teal-soft)] font-semibold mb-4">
               Start Your Build
             </p>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] mb-5">
-              Ready for a website that feels world-class?
+            <h2 className="relative font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] mb-5">
+              Let&rsquo;s build it.
             </h2>
-            <p className="text-[15px] text-slate-400 leading-relaxed mb-8 max-w-md">
-              Share your goals, timeline, and budget range. We usually reply within a few
-              hours and map the best path forward.
+            <p className="relative text-[15px] text-slate-300/80 leading-relaxed mb-8 max-w-md">
+              We reply within a few hours.
             </p>
-            <div className="space-y-3">
+            <div className="relative space-y-3">
               <a
                 href={`mailto:${brand.email}`}
-                className="block text-sm sm:text-base font-semibold text-white hover:text-cyan-300 transition-colors break-all"
+                className="block text-sm sm:text-base font-semibold text-white hover:text-[color:var(--teal-soft)] transition-colors break-all"
               >
                 {brand.email}
               </a>
@@ -78,7 +81,7 @@ export default function Contact() {
                 href={brand.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-sm sm:text-base font-semibold text-white hover:text-emerald-300 transition-colors"
+                className="block text-sm sm:text-base font-semibold text-white hover:text-[color:var(--signature-soft)] transition-colors"
               >
                 WhatsApp: {brand.whatsapp}
               </a>

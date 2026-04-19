@@ -7,6 +7,7 @@ import Capabilities from './components/sections/Capabilities'
 import Services from './components/sections/Services'
 import Portfolio from './components/sections/Portfolio'
 import About from './components/sections/About'
+import FAQ from './components/sections/FAQ'
 import Contact from './components/sections/Contact'
 import StickyCta from './components/ui/StickyCta'
 
@@ -30,6 +31,7 @@ export default function App() {
         <Services />
         <Portfolio />
         <About />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
