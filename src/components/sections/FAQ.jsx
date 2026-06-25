@@ -27,26 +27,21 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section
-      id="faq"
-      style={{ paddingTop: '2.4rem', paddingBottom: '2.4rem' }}
-      className="relative"
-    >
+    <section id="faq" className="relative py-24 sm:py-32">
       <Container>
-        <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
+            className="lg:sticky lg:top-28 self-start"
           >
-            <p className="text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[color:var(--teal-soft)] font-semibold mb-4">
-              Questions
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] mb-6">
+            <span className="eyebrow mb-5">Questions</span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[color:var(--ink)] leading-[1.1] mt-4 mb-5">
               Good to know.
             </h2>
-            <p className="text-[15px] text-slate-300/80 leading-relaxed max-w-sm">
+            <p className="text-[15px] text-[color:var(--ink-soft)] leading-relaxed max-w-sm">
               Can&rsquo;t find what you&rsquo;re looking for? Drop us a line — we reply within a few hours.
             </p>
           </motion.div>
@@ -56,7 +51,6 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-xl border border-white/10 bg-white/[0.02] px-7 py-6 sm:px-9 sm:py-8"
           >
             <Accordion items={faqs} />
           </motion.div>

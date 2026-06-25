@@ -15,10 +15,24 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const onReady = () => setTimeout(() => setLoading(false), 600)
-    if (document.readyState === 'complete') onReady()
-    else window.addEventListener('load', onReady, { once: true })
-    return () => window.removeEventListener('load', onReady)
+    let done = false
+    const finish = () => {
+      if (done) return
+      done = true
+      setLoading(false)
+    }
+    const onLoad = () => setTimeout(finish, 450)
+    if (document.readyState === 'complete') {
+      onLoad()
+    } else {
+      window.addEventListener('load', onLoad, { once: true })
+    }
+    // Guarantee the loader never traps the page (covers the load-race + slow assets)
+    const fallback = setTimeout(finish, 2000)
+    return () => {
+      window.removeEventListener('load', onLoad)
+      clearTimeout(fallback)
+    }
   }, [])
 
   return (

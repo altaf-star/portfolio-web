@@ -1,16 +1,20 @@
 import { motion } from 'framer-motion'
 
 const variants = {
+  // emerald → mint gradient primary call-to-action
   primary:
-    'bg-white text-[#0a0410] hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.4)]',
+    'text-white bg-[linear-gradient(120deg,var(--emerald),var(--emerald-bright))] hover:brightness-[1.06] shadow-[0_16px_40px_-12px_rgba(var(--emerald-glow),0.65)] hover:shadow-[0_20px_50px_-12px_rgba(var(--emerald-glow),0.8)]',
   glow:
-    'text-white font-semibold bg-[linear-gradient(135deg,var(--teal)_0%,var(--signature)_100%)] shadow-[0_0_0_1px_rgba(var(--signature-glow),0.35),0_10px_40px_-8px_rgba(var(--signature-glow),0.55),0_0_80px_-10px_rgba(var(--teal-glow),0.45)] hover:shadow-[0_0_0_1px_rgba(var(--signature-glow),0.5),0_15px_50px_-8px_rgba(var(--signature-glow),0.7),0_0_100px_-10px_rgba(var(--teal-glow),0.6)]',
-  teal:
-    'text-white font-semibold bg-[color:var(--teal)] hover:bg-[color:var(--teal-deep)] shadow-[0_10px_30px_-10px_rgba(var(--teal-glow),0.6)]',
+    'text-white bg-[linear-gradient(120deg,var(--emerald),var(--emerald-bright))] hover:brightness-[1.06] shadow-[0_16px_40px_-12px_rgba(var(--emerald-glow),0.65)] hover:shadow-[0_20px_50px_-12px_rgba(var(--emerald-glow),0.8)]',
+  // glassy white secondary
+  white:
+    'text-[color:var(--ink)] bg-white hover:bg-white shadow-[0_10px_30px_-12px_rgba(18,42,44,0.25)] hover:shadow-[0_16px_40px_-12px_rgba(18,42,44,0.3)] border border-[color:var(--line)]',
+  ink:
+    'text-white bg-[color:var(--ink)] hover:bg-[color:var(--emerald-deep)] shadow-[0_10px_30px_-14px_rgba(20,42,44,0.6)]',
   outline:
-    'border border-white/15 text-white hover:bg-white/5 hover:border-white/30',
+    'border border-[color:var(--line-strong)] text-[color:var(--ink)] hover:border-[color:var(--emerald)] hover:text-[color:var(--emerald)] bg-white/50',
   ghost:
-    'text-slate-300 hover:text-white hover:bg-white/5',
+    'text-[color:var(--ink-soft)] hover:text-[color:var(--emerald)] hover:bg-[color:var(--emerald)]/8',
 }
 
 export default function Button({

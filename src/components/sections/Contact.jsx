@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiSend, FiCheckCircle, FiAlertCircle, FiLoader } from 'react-icons/fi'
+import { FiSend, FiCheckCircle, FiAlertCircle, FiLoader, FiMail, FiMessageCircle } from 'react-icons/fi'
 import Container from '../ui/Container'
 import Button from '../ui/Button'
 import { brand } from '../../data/site'
@@ -39,51 +39,44 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-[15px] text-white placeholder-slate-500 outline-none transition-all duration-300 focus:border-[color:var(--teal)]/60 focus:ring-4 focus:ring-[color:var(--teal)]/10'
+    'w-full bg-[color:var(--surface-2)] border border-[color:var(--line)] rounded-xl px-4 py-3.5 text-[15px] text-[color:var(--ink)] placeholder-[color:var(--ink-muted)] outline-none transition-all duration-300 focus:border-[color:var(--mint)] focus:ring-4 focus:ring-[color:var(--mint)]/15 focus:bg-white'
 
   return (
-    <section
-      id="contact"
-      style={{ paddingTop: '2.4rem', paddingBottom: '2.4rem' }}
-      className="relative"
-    >
-      <Container>
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
+    <section id="contact" className="relative py-24 sm:py-32 bg-[color:var(--surface-2)]">
+      <Container className="relative z-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {/* Left panel */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-xl border border-white/10 bg-white/[0.02] px-7 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14 overflow-hidden"
+            className="relative card px-8 py-10 sm:px-10 sm:py-12 flex flex-col justify-center"
           >
-            <div
-              aria-hidden
-              className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-[color:var(--teal)]/10 blur-3xl pointer-events-none"
-            />
-            <p className="relative text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[color:var(--teal-soft)] font-semibold mb-4">
-              Start Your Build
-            </p>
-            <h2 className="relative font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] mb-5">
+            <span className="eyebrow mb-5">Start Your Build</span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[color:var(--ink)] leading-[1.1] mb-4">
               Let&rsquo;s build it.
             </h2>
-            <p className="relative text-[15px] text-slate-300/80 leading-relaxed mb-8 max-w-md">
-              We reply within a few hours.
+            <p className="text-[15px] text-[color:var(--ink-soft)] leading-relaxed mb-10 max-w-md">
+              Tell us about your project and we&rsquo;ll reply within a few hours — usually with first ideas attached.
             </p>
-            <div className="relative space-y-3">
+
+            <div className="space-y-3">
               <a
                 href={`mailto:${brand.email}`}
-                className="block text-sm sm:text-base font-semibold text-white hover:text-[color:var(--teal-soft)] transition-colors break-all"
+                className="flex items-center gap-3 text-[color:var(--ink)] hover:text-[color:var(--emerald)] transition-colors group"
               >
-                {brand.email}
+                <span className="icon-tile w-10 h-10"><FiMail size={18} /></span>
+                <span className="text-sm sm:text-base font-semibold break-all">{brand.email}</span>
               </a>
               <a
                 href={brand.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-sm sm:text-base font-semibold text-white hover:text-[color:var(--signature-soft)] transition-colors"
+                className="flex items-center gap-3 text-[color:var(--ink)] hover:text-[color:var(--emerald)] transition-colors group"
               >
-                WhatsApp: {brand.whatsapp}
+                <span className="icon-tile w-10 h-10"><FiMessageCircle size={18} /></span>
+                <span className="text-sm sm:text-base font-semibold">{brand.whatsapp}</span>
               </a>
             </div>
           </motion.div>
@@ -95,7 +88,7 @@ export default function Contact() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, delay: 0.1 }}
             onSubmit={handleSubmit}
-            className="relative rounded-xl border border-white/10 bg-white/[0.02] px-7 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14 space-y-5"
+            className="card px-7 py-9 sm:px-9 sm:py-10 space-y-5"
           >
             <input
               type="text"
@@ -108,50 +101,26 @@ export default function Contact() {
               aria-hidden="true"
             />
             <div>
-              <label className="block text-sm font-medium text-white mb-2">Full Name</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                placeholder="Jane Doe"
-                className={inputClass}
-              />
+              <label className="block text-sm font-semibold text-[color:var(--ink)] mb-2">Full Name</label>
+              <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Jane Doe" className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-white mb-2">Work Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                placeholder="jane@company.com"
-                className={inputClass}
-              />
+              <label className="block text-sm font-semibold text-[color:var(--ink)] mb-2">Work Email</label>
+              <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="jane@company.com" className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-white mb-2">Project Brief</label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                placeholder="Tell us what you want to build, expected timeline, and key goals."
-                className={`${inputClass} resize-none`}
-              />
+              <label className="block text-sm font-semibold text-[color:var(--ink)] mb-2">Project Brief</label>
+              <textarea name="message" value={form.message} onChange={handleChange} required rows={4} placeholder="Tell us what you want to build, expected timeline, and key goals." className={`${inputClass} resize-none`} />
             </div>
 
             {status === 'error' && (
-              <div className="flex items-start gap-2 text-sm text-red-300 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+              <div className="flex items-start gap-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
                 <FiAlertCircle size={16} className="shrink-0 mt-0.5" />
                 <span>{errorMsg}</span>
               </div>
             )}
 
-            <Button type="submit" variant="glow" size="lg" disabled={status === 'sending'} className="w-full">
+            <Button type="submit" variant="primary" size="lg" disabled={status === 'sending'} className="w-full">
               {status === 'sending' && (<><FiLoader className="animate-spin" /> Sending...</>)}
               {status === 'sent' && (<><FiCheckCircle /> Project Brief Sent!</>)}
               {(status === 'idle' || status === 'error') && (<>Send Project Brief <FiSend size={14} /></>)}

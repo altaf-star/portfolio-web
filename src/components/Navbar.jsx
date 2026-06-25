@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { navLinks } from '../data/site'
 import Button from './ui/Button'
-import Logo3D from './ui/Logo3D'
+import Logo from './ui/Logo'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -22,29 +22,25 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.1 }}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'py-3 bg-[#0a0410]/80 backdrop-blur-xl border-b border-white/5'
-          : 'py-5 bg-transparent'
+        scrolled ? 'py-2.5 glass shadow-[0_8px_30px_-18px_rgba(23,42,48,0.25)]' : 'py-4 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 lg:px-14 xl:px-16 flex items-center justify-between gap-3">
         {/* Logo */}
-        <motion.a
-          href="#home"
-          whileHover={{ scale: 1.03 }}
-          className="flex items-center gap-2 group shrink-0"
-          aria-label="AA Dev Studio — Home"
-        >
-          <Logo3D className="h-14 sm:h-16 md:h-20 w-auto drop-shadow-[0_2px_12px_rgba(199,36,101,0.45)]" />
-        </motion.a>
+        <a href="#home" className="flex items-center gap-2.5 group shrink-0" aria-label="AA Dev Studio — Home">
+          <Logo variant="mark" className="h-11 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
+          <span className="font-display text-[17px] sm:text-lg font-extrabold tracking-tight text-[color:var(--ink)] leading-none">
+            AA Dev <span className="text-[color:var(--emerald)]">Studio</span>
+          </span>
+        </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+              className="px-4 py-2 text-sm font-medium text-[color:var(--ink-soft)] hover:text-[color:var(--emerald)] transition-colors rounded-lg"
             >
               {link.name}
             </a>
@@ -53,14 +49,14 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <div className="hidden md:block">
-            <Button href="#contact" variant="glow" size="sm">
+            <Button href="#contact" variant="primary" size="sm">
               Book Intro Call
             </Button>
           </div>
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setOpen((v) => !v) }}
-            className="md:hidden relative z-[60] w-11 h-11 rounded-full flex items-center justify-center text-slate-200 hover:bg-white/10 active:bg-white/15 transition-colors cursor-pointer"
+            className="md:hidden relative z-[60] w-11 h-11 rounded-full flex items-center justify-center text-[color:var(--ink)] hover:bg-[color:var(--ink)]/5 active:bg-[color:var(--ink)]/10 transition-colors cursor-pointer"
             aria-label="Toggle menu"
             aria-expanded={open}
           >
@@ -69,9 +65,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu — always mounted, toggled by CSS so anchor taps aren't killed by unmount */}
+      {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out bg-[#0a0410]/95 backdrop-blur-xl border-t border-white/5 ${
+        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out glass border-t border-[color:var(--line)] ${
           open ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
         }`}
       >
@@ -81,15 +77,15 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               onClick={() => setTimeout(() => setOpen(false), 250)}
-              className="py-3 text-sm font-medium text-slate-200 hover:text-[color:var(--teal-soft)] transition-colors"
+              className="py-3 text-[15px] font-medium text-[color:var(--ink)] hover:text-[color:var(--emerald)] transition-colors"
             >
               {link.name}
             </a>
           ))}
-          <div className="pt-3 mt-2 border-t border-white/5">
+          <div className="pt-3 mt-2 border-t border-[color:var(--line)]">
             <Button
               href="#contact"
-              variant="glow"
+              variant="primary"
               size="sm"
               className="w-full"
               onClick={() => setTimeout(() => setOpen(false), 250)}

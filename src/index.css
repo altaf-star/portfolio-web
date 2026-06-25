@@ -1,70 +1,70 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* ============================================================
+   AA Dev Studio — "Gradient Modern" design system
+   Bright canvas · emerald + mint gradients · glassy cards
+   Palette anchored to the logo: emerald #186F67 / ink #172A30
+   ============================================================ */
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Sora', system-ui, sans-serif;
 
-  /* Brand — burgundy (primary) + teal (secondary) from logo #3 */
-  --color-brand-50:  #fdf2f7;
-  --color-brand-100: #fbe0ec;
-  --color-brand-200: #f5b7d1;
-  --color-brand-300: #ec84ae;
-  --color-brand-400: #df4e87;
-  --color-brand-500: #c72465;
-  --color-brand-600: #a31955;
-  --color-brand-700: #7c1443;
-  --color-brand-800: #5a0f32;
-  --color-brand-900: #380a22;
+  --color-emerald-50:  #ecfbf6;
+  --color-emerald-100: #d2f5e9;
+  --color-emerald-200: #a7ebd4;
+  --color-emerald-300: #6fdab9;
+  --color-emerald-400: #38c39c;
+  --color-emerald-500: #1ea582;
+  --color-emerald-600: #18866b;
+  --color-emerald-700: #166c59;
+  --color-emerald-800: #145648;
+  --color-emerald-900: #11463c;
 
-  --color-teal-50:  #eefdfd;
-  --color-teal-100: #d4f8fa;
-  --color-teal-200: #a4edf3;
-  --color-teal-300: #6edbe3;
-  --color-teal-400: #35c1cf;
-  --color-teal-500: #14a4b3;
-  --color-teal-600: #0b8a98;
-  --color-teal-700: #0b6b74;
-  --color-teal-800: #0e555d;
-  --color-teal-900: #0a3f45;
+  --color-ink-50:  #f3f6f6;
+  --color-ink-100: #e2e9e9;
+  --color-ink-200: #c2cfcf;
+  --color-ink-300: #95a8a8;
+  --color-ink-400: #5f7679;
+  --color-ink-500: #3c5256;
+  --color-ink-600: #2a3d41;
+  --color-ink-700: #213034;
+  --color-ink-800: #1a2b30;
+  --color-ink-900: #142428;
 }
 
 :root {
-  --signature: #c72465;            /* burgundy / primary */
-  --signature-soft: #ec84ae;
-  --signature-deep: #7c1443;
-  --signature-glow: 199, 36, 101;
+  --canvas: #fbfcfb;           /* near-white background */
+  --surface: #ffffff;          /* cards / panels */
+  --surface-2: #f4f7f5;        /* subtle alternate section */
+  --ink: #16292b;              /* primary text */
+  --ink-soft: #51635f;         /* secondary text */
+  --ink-muted: #8a9a95;        /* captions */
+  --line: rgba(18, 42, 44, 0.07);
+  --line-strong: rgba(18, 42, 44, 0.12);
 
-  --teal: #14a4b3;
-  --teal-soft: #6edbe3;
-  --teal-deep: #0b6b74;
-  --teal-glow: 20, 164, 179;
+  --emerald: #1a7d6f;
+  --emerald-bright: #1ea582;
+  --emerald-deep: #145c52;
+  --mint: #46c7ad;
+  --mint-soft: #8fe0cd;
+  --emerald-glow: 26, 125, 111;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: var(--font-sans);
-  background-color: #0a0410;
-  color: #e6dfe9;
+  background-color: var(--canvas);
+  color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  overflow-x: clip;
-}
+#root { overflow-x: clip; }
 
 @supports (padding: max(0px)) {
   body {
@@ -73,79 +73,102 @@ body {
   }
 }
 
-.dark body {
-  background-color: #0a0410;
-  color: #e6dfe9;
-  background-image:
-    radial-gradient(ellipse 70% 50% at 8% 6%, rgba(20, 164, 179, 0.14), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 92% 92%, rgba(199, 36, 101, 0.18), transparent 60%);
-  background-attachment: fixed;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(199, 36, 101, 0.45);
-  border-radius: 8px;
+  background: rgba(24, 111, 103, 0.30);
+  border-radius: 8px; border: 2px solid var(--canvas);
 }
+::-webkit-scrollbar-thumb:hover { background: rgba(24, 111, 103, 0.5); }
 
-::selection {
-  background-color: rgba(199, 36, 101, 0.32);
-  color: #fff;
-}
+::selection { background-color: rgba(59, 201, 168, 0.28); color: var(--ink); }
 
-/* ───── Brand utilities ───── */
-
-.glass {
-  background: rgba(20, 8, 28, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(199, 36, 101, 0.12);
-}
+/* ───── Typography ───── */
+.font-display { font-family: var(--font-display); }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--teal-soft) 0%, var(--teal) 40%, var(--signature) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  background: linear-gradient(120deg, var(--emerald) 0%, var(--mint) 55%, var(--ink) 130%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
 }
 
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(199, 36, 101, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(199, 36, 101, 0.06) 1px, transparent 1px);
-  background-size: 56px 56px;
+/* ───── Surfaces ───── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 40px -16px rgba(18, 42, 44, 0.18);
 }
 
-.bg-radial-glow {
-  background:
-    radial-gradient(ellipse at 20% 0%, rgba(20, 164, 179, 0.18), transparent 55%),
-    radial-gradient(ellipse at 80% 100%, rgba(199, 36, 101, 0.22), transparent 55%);
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 2px rgba(18, 42, 44, 0.04);
+  transition: box-shadow .4s ease, border-color .4s ease, transform .4s ease;
+}
+.card-hover:hover {
+  border-color: rgba(59, 201, 168, 0.45);
+  box-shadow: 0 24px 60px -28px rgba(24, 111, 103, 0.45);
+  transform: translateY(-4px);
 }
 
-.bg-aurora {
-  background:
-    radial-gradient(ellipse 60% 30% at 10% 20%, rgba(20, 164, 179, 0.22), transparent 60%),
-    radial-gradient(ellipse 50% 30% at 90% 80%, rgba(199, 36, 101, 0.28), transparent 60%);
-  filter: blur(2px);
+.navglass {
+  background: rgba(246, 250, 248, 0.72);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ───── Gradient blobs ───── */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ───── Accents ───── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--emerald);
+}
+.eyebrow::before {
+  content: ''; width: 1.6rem; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--emerald), var(--mint));
+}
+
+.pill {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  background: #fff;
+  box-shadow: 0 8px 30px -12px rgba(18, 42, 44, 0.18);
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  padding: 0.45rem 0.85rem 0.45rem 0.5rem;
+  font-size: 0.8rem; font-weight: 600; color: var(--ink-soft);
+}
+.pill b {
+  background: linear-gradient(120deg, var(--emerald), var(--mint));
+  color: #fff; border-radius: 9999px; padding: 0.2rem 0.7rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em;
+}
+
+.icon-tile {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--mint) 130%);
+  color: #fff;
+  box-shadow: 0 14px 34px -14px rgba(var(--emerald-glow), 0.6);
 }
 
 .bg-dots {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(199, 36, 101, 0.3) 1px, transparent 0);
-  background-size: 18px 18px;
-}
-
-.glow-brand {
-  box-shadow:
-    0 0 0 1px rgba(199, 36, 101, 0.25),
-    0 20px 60px -20px rgba(199, 36, 101, 0.45),
-    0 0 80px -20px rgba(20, 164, 179, 0.35);
+  background-image: radial-gradient(circle at 1px 1px, rgba(18, 42, 44, 0.10) 1px, transparent 0);
+  background-size: 22px 22px;
 }
 
 @media (prefers-reduced-motion: reduce) {

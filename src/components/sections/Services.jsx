@@ -3,64 +3,55 @@ import { motion } from 'framer-motion'
 import { FiArrowUpRight } from 'react-icons/fi'
 import Container from '../ui/Container'
 import ServiceModal from '../ui/ServiceModal'
-import TiltCard from '../ui/TiltCard'
 import { services } from '../../data/services'
 
 export default function Services() {
   const [active, setActive] = useState(null)
 
   return (
-    <section
-      id="services"
-      style={{ paddingTop: '2.4rem', paddingBottom: '2.4rem' }}
-      className="relative"
-    >
-      <Container>
-        <div style={{ marginBottom: '0.5rem' }} className="max-w-3xl">
-          <p className="text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[color:var(--teal-soft)] font-semibold mb-4">
-            Services
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.1]">
+    <section id="services" className="relative py-24 sm:py-32 bg-[color:var(--surface-2)]">
+      <Container className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-14 sm:mb-16"
+        >
+          <span className="eyebrow mb-5">Services</span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[color:var(--ink)] leading-[1.1] mt-4">
             How we help.
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {services.map((service, i) => {
             const Icon = service.icon
             return (
-              <motion.div
+              <motion.button
                 key={service.title}
+                type="button"
+                onClick={() => setActive(service)}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
+                whileHover={{ y: -6 }}
+                className="card group text-left h-full px-7 py-8 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--mint)]/60 hover:border-[color:var(--mint)]/45 hover:shadow-[0_24px_60px_-28px_rgba(24,111,103,0.45)]"
               >
-                <TiltCard className="h-full rounded-xl">
-                  <button
-                    type="button"
-                    onClick={() => setActive(service)}
-                    className="group relative text-left w-full h-full bg-white/[0.02] border border-white/10 rounded-xl px-8 py-9 sm:px-8 sm:py-10 hover:bg-white/[0.04] hover:border-[color:var(--signature)]/30 transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--teal)]/40"
-                  >
-                    <div className="relative mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-[linear-gradient(135deg,var(--teal)_0%,var(--signature)_100%)] flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-[0_10px_30px_-10px_rgba(var(--signature-glow),0.5)]">
-                        <Icon size={22} />
-                      </div>
-                    </div>
-
-                    <h3 className="font-display text-lg font-semibold text-white mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-slate-300/75 leading-relaxed mb-6">
-                      {service.tagline || service.desc}
-                    </p>
-
-                    <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[color:var(--signature-soft)] group-hover:text-white group-hover:gap-2 transition-all">
-                      Learn more <FiArrowUpRight />
-                    </div>
-                  </button>
-                </TiltCard>
-              </motion.div>
+                <div className="icon-tile w-12 h-12 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon size={22} />
+                </div>
+                <h3 className="font-display text-lg font-bold text-[color:var(--ink)] mb-2.5">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-[color:var(--ink-soft)] leading-relaxed mb-6">
+                  {service.tagline || service.desc}
+                </p>
+                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[color:var(--emerald)] group-hover:gap-2.5 transition-all">
+                  Learn more <FiArrowUpRight />
+                </div>
+              </motion.button>
             )
           })}
         </div>

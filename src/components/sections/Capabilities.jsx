@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiPlus } from 'react-icons/fi'
+import { FiPlus, FiLayout, FiTrendingUp, FiGrid } from 'react-icons/fi'
 import Container from '../ui/Container'
 
 const capabilities = [
   {
     n: '01',
+    icon: FiLayout,
     title: 'Cinematic Landing Pages',
     promise: 'Scroll-stopping first impressions.',
     detail:
@@ -13,6 +14,7 @@ const capabilities = [
   },
   {
     n: '02',
+    icon: FiTrendingUp,
     title: 'Conversion Websites',
     promise: 'Pipeline-grade marketing sites.',
     detail:
@@ -20,6 +22,7 @@ const capabilities = [
   },
   {
     n: '03',
+    icon: FiGrid,
     title: 'Web App Interfaces',
     promise: 'Dashboards users actually trust.',
     detail:
@@ -31,30 +34,25 @@ export default function Capabilities() {
   const [open, setOpen] = useState(null)
 
   return (
-    <section
-      id="experience"
-      style={{ paddingTop: '2.4rem', paddingBottom: '2.4rem' }}
-      className="relative"
-    >
+    <section id="experience" className="relative py-24 sm:py-32">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-14 sm:mb-20"
+          className="text-center max-w-2xl mx-auto mb-14 sm:mb-16"
         >
-          <p className="text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[color:var(--teal-soft)] font-semibold mb-4">
-            Capabilities
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.1]">
+          <span className="eyebrow mb-5">Capabilities</span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[color:var(--ink)] leading-[1.1] mt-4">
             What we build.
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
           {capabilities.map((c, i) => {
             const isOpen = open === i
+            const Icon = c.icon
             return (
               <motion.div
                 key={c.n}
@@ -62,39 +60,37 @@ export default function Capabilities() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
-                whileHover={{ y: -4 }}
-                className="h-full rounded-xl border border-white/10 bg-white/[0.02] hover:border-[color:var(--signature)]/25 hover:bg-white/[0.035] px-8 py-9 sm:px-10 sm:py-11 transition-colors"
+                className="card card-hover h-full px-7 py-8 sm:px-8 sm:py-9 flex flex-col"
               >
-                <p className="text-xs tracking-widest text-[color:var(--teal-soft)] font-mono mb-5">
-                  {c.n}
-                </p>
-                <h3 className="font-display text-lg sm:text-xl font-semibold text-white mb-3">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="icon-tile w-12 h-12"><Icon size={22} /></div>
+                  <span className="font-display text-sm font-bold text-[color:var(--ink)]/15">{c.n}</span>
+                </div>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-[color:var(--ink)] mb-2">
                   {c.title}
                 </h3>
-                <p className="text-sm text-slate-300/80 leading-relaxed mb-6">
+                <p className="text-sm text-[color:var(--ink-soft)] leading-relaxed mb-6">
                   {c.promise}
                 </p>
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[color:var(--signature-soft)] hover:text-white transition-colors"
+                  className="mt-auto inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[color:var(--emerald)] hover:gap-3 transition-all"
                   aria-expanded={isOpen}
                 >
                   {isOpen ? 'Hide details' : 'Learn more'}
-                  <FiPlus
-                    className={`transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
-                  />
+                  <FiPlus className={`transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`} />
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                      animate={{ height: 'auto', opacity: 1, marginTop: 20 }}
+                      animate={{ height: 'auto', opacity: 1, marginTop: 16 }}
                       exit={{ height: 0, opacity: 0, marginTop: 0 }}
                       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="text-sm text-slate-300/80 leading-relaxed pt-1">
+                      <p className="text-sm text-[color:var(--ink-soft)] leading-relaxed pt-1">
                         {c.detail}
                       </p>
                     </motion.div>
